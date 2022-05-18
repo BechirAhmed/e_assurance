@@ -28,4 +28,12 @@ class Assurance extends Model
         'vehicule_power',
         'payment',
     ];
+
+    public static function boot()
+    {
+        parent::boot();
+        self::creating(function ($model) {
+            $model->reference = str_pad(Assurance::all()->max('reference')+1, 6, 0, STR_PAD_LEFT);
+        });
+    }
 }
