@@ -1,4 +1,4 @@
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/rs1690663/repositories/assurance/
+    - export DEPLOYPATH=/home/rs1690663/assurance/
     - /bin/cp -R * $DEPLOYPATH
