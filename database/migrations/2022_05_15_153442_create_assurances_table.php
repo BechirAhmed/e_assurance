@@ -30,7 +30,7 @@ class CreateAssurancesTable extends Migration
             $table->string('vehicule_color');
             $table->string('vehicule_chassis');
             $table->string('vehicule_matricule');
-            $table->int('vehicule_power');
+            $table->integer('vehicule_power');
             $table->date('vehicule_first_use_date');
             $table->enum('duration', ['1 Month', '3 Months', '6 Months', '1 Year', '2 Years'])->default('1 Year');
             $table->date('start_date')->nullable();
