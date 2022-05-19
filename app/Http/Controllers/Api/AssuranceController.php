@@ -58,7 +58,7 @@ class AssuranceController extends Controller
      */
     public function store(Request $request)
     {
-        $user = $request()->user();
+        $user = $request->user();
         $assurance = Assurance::create($request->all());
 
         return response()->json([
