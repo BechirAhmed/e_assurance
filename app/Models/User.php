@@ -29,6 +29,8 @@ class User extends Authenticatable
         'nni',
         'birthdate',
         'n_permis',
+        'device_type',
+        'device_id',
     ];
 
     /**

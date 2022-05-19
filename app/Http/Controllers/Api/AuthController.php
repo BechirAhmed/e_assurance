@@ -126,6 +126,38 @@ class AuthController extends Controller
         return response()->json($return_data, 200);   
     }
 
+    public function updateDevice(Request $request)
+    {
+        $user = User::findOrFail($request->user_id);
+
+        $rules = array(
+            'device_type'  =>'required',
+            'device_id'    =>'required'
+        );
+        
+        $validator = Validator::make($request->all(), $rules);
+
+        if($validator->fails()) {
+            return response()->json([
+                'status_code' => '0',
+                'status_message' => $validator->messages()->first()
+            ]);
+        }
+
+        if($user == '') {
+            return response()->json([
+                'status_code'       => '0',
+                'status_message'    => 'invalid credentials',
+            ]);
+        }
+
+        User::where('id', $request->user_id)->update(['device_id'=>$request->device_id,'device_type'=>$request->device_type]);                
+        return response()->json([
+            'status_code'     => '1',
+            'status_message'  => __('updated successfully'),
+        ]);
+    }
+
     /**
      * @return mixed
      */

@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('nni')->nullable();
             $table->string('birthdate')->nullable();
             $table->string('n_permis')->nullable();
+            $table->string('device_type')->nullable();
             $table->string('device_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
