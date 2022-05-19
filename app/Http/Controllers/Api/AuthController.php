@@ -54,7 +54,7 @@ class AuthController extends Controller
                 'first_name' => 'required',
                 'last_name' => 'required',
                 'phone_number' => 'required|regex:/^[0-9]+$/|min:8|unique:users',
-                'email' => 'unique:users',
+                'email' => 'nullable|unique:users',
                 'password' => 'required',
             ]);
             if ($validator->fails()) {
