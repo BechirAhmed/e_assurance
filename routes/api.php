@@ -29,4 +29,5 @@ Route::middleware(['auth:sanctum'])->prefix('v1')->group(function () {
     Route::post('auth/logout', 'Api\AuthController@logout');
     Route::post('auth/update_device', 'Api\AuthController@updateDevice');
     Route::resource('assurances', 'Api\AssuranceController');
+    Route::get('user/assurances', 'Api\AssuranceController@userAssurances');
 });

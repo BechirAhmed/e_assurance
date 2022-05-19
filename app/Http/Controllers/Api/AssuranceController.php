@@ -30,6 +30,16 @@ class AssuranceController extends Controller
         return AssuranceResource::collection($assuranceQuery->paginate($limit));
     }
 
+    public function userAssurances(Request $request)
+    {
+        $user = request()->user();
+        $assurances = $user->assurances;
+
+        return response()->json([
+            'success'   => true,
+            'assurances' => $assurances
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -48,9 +58,13 @@ class AssuranceController extends Controller
      */
     public function store(Request $request)
     {
+        $user = $request()->user();
         $assurance = Assurance::create($request->all());
 
-        return new AssuranceResource($assurance);
+        return response()->json([
+            'success'   => true,
+            'assurances' => $user->assurances
+        ]);
     }
 
     /**
